@@ -1,0 +1,114 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+main()
+{
+	char key1,key2;
+	int password,password1=123,i=0,a=1000;
+	while(1)
+	{
+		do
+		{
+			system("cls");
+			printf("*****************************\n");
+			printf("*1.输入密码					*\n");
+			printf("*2.提取现金					*\n");
+			printf("*3.查询余额					*\n");
+			printf("*4.返回						*\n");
+			printf("*****************************\n");
+			key1=getch();//头文件为conio.h
+		}while(key1!='1'&&key1!='2'&&key1!='3'&&key1!='4');
+		switch(key1)
+		{
+		case'1':
+			system("cls");//清屏 头文件为stdlib.h
+			do
+			{
+				i++;
+				printf("输入密码(123):\n");
+				scanf("%d",&password);
+				if(password!=password1)
+				{
+					if(i>=3)
+					{
+						printf("输入错误次数过多，请稍后再试\n");
+						getch();
+						exit(0);
+					}
+					else printf("输入错误\n");
+					getch();
+					continue;
+				}
+			}while(i<=3&&password!=password1);
+			printf("输入正确 继续操作\n");
+			getch();
+			continue;
+		case'2':
+			system("cls");
+			do
+			{
+				if(password!=password1)
+				{
+					printf("error请重新输入密码");
+					getch();
+					continue;
+				}
+				else 
+					system("cls");
+					printf("*****************************\n");
+					printf("*1.$100						*\n");
+					printf("*2.$200						*\n");
+					printf("*3.$400						*\n");
+					printf("*4.返回						*\n");
+					printf("*****************************\n");
+					key2=getch();
+			}while(key1!='1'&&key1!='2'&&key1!='3'&&key1!='4');
+			switch(key2)
+			{
+			case'1':
+				system("cls");
+				a=a-100;
+				printf("*****************************\n");
+				printf("*取出100元					*\n");
+				printf("*欢迎使用					*\n");
+				printf("*****************************\n");
+				getch();
+				continue;
+			case'2':
+				system("cls");
+				a=a-200;
+				printf("*****************************\n");
+				printf("*取出200元					*\n");
+				printf("*欢迎使用					*\n");
+				printf("*****************************\n");
+				getch();
+				continue;
+			case'3':
+				system("cls");
+				a=a-400;
+				printf("*****************************\n");
+				printf("*取出400元					*\n");
+				printf("*欢迎使用					*\n");
+				printf("*****************************\n");
+				getch();
+				continue;
+			case'4':
+				continue;
+			}
+			continue;
+		case'3':
+			system("cls");
+			printf("*余额为:%d*\n",a);
+			getch();
+			continue;
+		case'4':
+			system("cls");
+			printf("*****************************\n");
+			printf("*欢迎使用					*\n");
+			printf("*****************************\n");
+			getch();
+			continue;
+		}
+		continue;
+	}
+}
