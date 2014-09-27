@@ -1,0 +1,137 @@
+typedef struct node    //建立单链表
+{
+	int data;
+	node *next;
+}node;
+
+node *create()
+{
+	int i=0;   //链表中数据的个数
+	int x=0;
+	node *head,*p,*q;
+	head=(node *)malloc(sizeof(node));//创建头结点
+	while(1)
+	{
+		printf("Please input the data:");
+		scanf("%d",&x);
+		if(x==0) break;
+		p=(node *)malloc(sizeof(node));
+		p->data=x;
+		if(++i==1)
+			{head->next=p;}
+		else {q->next=p;}
+		q=p;
+	}
+	q->next=NULL;
+	return head;
+}
+
+int length(node *head)//检查单链表长度并返回
+{
+	int len=0;
+	node *p;
+	p=head->next;
+	while(p!=NULL)
+	{
+		len++;
+		p=p->next;
+	}
+	return len;
+}
+
+int print(node *head)//输出单链表
+{
+	node *p;
+	int sum=0;
+	p=head->next;
+	if(p==NULL)
+	{	
+		printf("link is empty\n");
+		break;
+	}
+	while(p!=NULL)
+	{
+		printf("The %dth is:%d\n",++sum,p->data);
+		p=p->next;
+	}
+}
+
+int *search_node(node *head,int pos)//寻找单链表节点位置
+{
+	node *p;
+	p=head->next;
+	if(pos<0)
+		printf("enter error");
+	if(pos==0)
+		return head;
+	if(p==NULL)
+	{
+		printf("link is empty\n");
+		return NULL;
+	}
+	while(--pos)
+	{
+		if((p=p->next)==NULL)
+		{
+			printf("链表长度不够\n");
+			break;
+		}
+	}
+	return p;
+}
+
+int *insert_node(node *head,int pos,int data)//链表中插入数据
+{
+	node *p;
+	node *item=NULL;
+	item=(node*)malloc(sizeof(node));
+	item->data=data;
+	if(pos==o)
+	{
+		head->next=item;
+		return head;
+	}	
+	p=search_node(head,pos);
+	if(p!=NULL)
+	{
+		item->next=p->next;
+		p->next=item;
+	}
+	return head;
+}
+
+int *delete_node(node *head,int pos)//链表中删除数据
+{
+	node *p;
+	node *item=NULL;
+	p=head->next;
+	if(p==NULL)
+	{
+		printf("link is empty\n");
+		return NULL;
+	}
+	p=search_node(head,pos-1);
+	if(p!=NULL)
+	{
+		item=p->next;
+		p->next=item-next;
+		delete item;
+	}
+	return head;
+}
+
+
+
+int main()//测试函数
+{
+	node *head=create();
+	printf("length:%d\n",length(head));
+	head=insert_node(head,2,5);
+	printf("insert integer 5 after 2th node\n");
+	print(head);
+	head=delete_node(head,2);
+	printf("delete the 3th  node\n");
+	print(head);
+	return 0;
+
+}
